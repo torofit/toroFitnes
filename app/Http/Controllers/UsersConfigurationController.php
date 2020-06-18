@@ -57,7 +57,7 @@ class UsersConfigurationController extends Controller
         }
         if(strlen($userPass) < 8){
             if($userPass != null){
-                return response()->json(['error' => "La contrasenya a de tenir més de 8 caracters"], 500);
+                return response()->json(['error' => "La contrasenya a de tenir més de 8 caràcters "], 500);
             }
         } else if ($userPass == $userPassCon) {
             $user->password = bcrypt($userPass);
@@ -80,13 +80,13 @@ class UsersConfigurationController extends Controller
 
     public function editAss(Request $request){
         if($request->input('etiquetes') == null){
-            return response()->json(['error' => "Has de seleccionar un minim de una etiqueta"], 500);
+            return response()->json(['error' => "Has de seleccionar un mínim  de una etiqueta"], 500);
         }
         if($request->input('description') == null){
             return response()->json(['error' => "Has de escriure algo sobre tu a la descripció"], 500);
         } 
         if(strlen($request->input('description')) > 140){
-            return response()->json(['error' => "La descripció no pot passar de 140 caracters"], 500);
+            return response()->json(['error' => "La descripció no pot passar de 140 caràcters"], 500);
         }
 
         $user = auth()->user();
@@ -134,7 +134,7 @@ class UsersConfigurationController extends Controller
         }
 
         $notification = array(
-            'message' => 'Dades guradades',
+            'message' => 'Dades guardades',
             'alert-type' => 'success'
         );
 

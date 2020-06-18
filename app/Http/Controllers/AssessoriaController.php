@@ -73,6 +73,7 @@ class AssessoriaController extends Controller
         if($request->hasFile('dieta')){
             $filenameWithExt = $request->file('dieta')->getClientOriginalName();
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $filename = str_replace(' ', '', $filename);
             $extension = $request->file('dieta')->getClientOriginalExtension();
             $fileNameToStore = $filename.'_'.time().'.'.$extension;
             $path = $request->file('dieta')->storeAs('private/dietas/', $fileNameToStore);
@@ -87,6 +88,7 @@ class AssessoriaController extends Controller
         if($request->hasFile('rutina')){
             $filenameWithExt = $request->file('rutina')->getClientOriginalName();
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $filename = str_replace(' ', '', $filename);
             $extension = $request->file('rutina')->getClientOriginalExtension();
             $fileNameToStore = $filename.'_'.time().'.'.$extension;
             $path = $request->file('rutina')->storeAs('private/rutinas/', $fileNameToStore);

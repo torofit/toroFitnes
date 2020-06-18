@@ -49,32 +49,12 @@ class HomeController extends Controller
         return view('cliHome')->with(array('users' => $users, 'etiquetes' => $etiquetes));
     }
 
-
-  /*  public function searchAssEti(Request $request){
-        Log::debug($request->input('checked'));
-
-        $users = User::where('type', '=', 2)->get();
-        
-        dd($users[0]->assessor->etiquetas[1]->id);
-
-        $inif = "";
-
-        foreach($users->assessor as $ass){
-            foreach ($ass->etiquetas as $et){
-
-            }
-        }
-
-        return view('cliHome')->with(array('users' => $users, 'etiquetes' => $etiquetes));
-    } */
-
     public function indexAss()
     {
         $asse = auth()->user()->assessor;
         $asse = Assessoria::whereDate('data_inici', '<=', Carbon::now())
         ->whereDate('data_fi', '>', Carbon::now())
         ->where('assessor_id', '=', $asse->id)->get();
-       // dd($asse[0]->user);
         
         return view('assHome')->with(array('asse' => $asse));
     }

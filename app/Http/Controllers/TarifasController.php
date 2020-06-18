@@ -80,7 +80,10 @@ class TarifasController extends Controller
         ]);
     }
     public function eliminarTarifa(Request $request){
-        $tarifa = Tarifa::where('id', $request->route('id'))->first();
+        
+        $tarifa = Tarifa::where('id', $request->input('id'))->first(); 
+        
+        Log::debug($tarifa);
         $tarifa->delete();
 
         $notification = array(
