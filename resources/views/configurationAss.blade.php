@@ -3,13 +3,13 @@
 @section('content')
 
 <div class="container" style="margin-top:30px">
-    <h1 style="text-align:center">Configuració basica Assessor</h1>
+    <h1 style="text-align:center">Configuració bàsica Assessor</h1>
 
     <form id="editAssForm">
         <input type="hidden" name="_token" id="token-edit" value="{{ csrf_token() }}">
         <div class="row justify-content-center">
             <div class="form-group col-xs-12 col-sm-10 col-md-8 col-lg-5 col-xl-4">
-                <label for="exampleInputEmail1">Breu Descripcio de 140 caracters maxim</label>
+                <label for="exampleInputEmail1">Breu Descripció de 140 caràcters màxim</label>
                 <textarea id="form-description" rows="4" cols="50"
                     class="form-control justify-content-center">{{ isset($user->assessor->description) ? $user->assessor->description : 'descripcio' }}</textarea>
             </div>

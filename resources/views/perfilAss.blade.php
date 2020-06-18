@@ -26,12 +26,17 @@
     <h3 style="text-align: center; margin-top:20px">Tarifes</h3>
     <div class="row justify-content-center">
         @if($user->assessor->tarifas == "[]")
-        <h4 style="text-align: center; margin-top:40px">De moment no tens tarifes les pots crear des de el menu de tarifes</h6>
+        <h4 style="text-align: center; margin-top:40px">De moment no tens tarifes les pots crear des de el menú de tarifes</h6>
         @endif
         @foreach ($user->assessor->tarifas as $t)
         <div class="card" style="width: 18rem;">
             <h5 class="card-titol">{{$t->title}}</h5>
-            <h6 class="card-duration">Duracio {{$t->duration}} mes<h6>
+            <h6 class="card-duration">Duracio {{$t->duration}}
+            @if ($t->duration > 1)
+                mesos
+            @else
+                mes
+            @endif <h6>
                     <h6 class="card-price">{{$t->price}}€</h6>
                     <div>
 

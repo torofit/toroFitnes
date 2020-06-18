@@ -15,7 +15,13 @@
         @foreach ($tar as $t)
         <div class="card" style="width: 18rem;">
             <h5 class="card-titol">{{$t->title}}</h5>
-            <h6 class="card-duration">Duracio {{$t->duration}} mes<h6>
+            <h6 class="card-duration">Duracio {{$t->duration}}
+                @if ($t->duration > 1)
+                    mesos
+                @else
+                    mes
+                 @endif 
+                 <h6>
                     <h6 class="card-price">{{$t->price}}€</h6>
                     <div>
 
@@ -34,9 +40,9 @@
                             <button class="btn-con">Editar Tarifa</button>
                         </form>
                         <form id="delete-tar">
-                            <input type="hidden" value="{{$t->id}}" id="form-id">
                             <input type="hidden" name="_token" id="token-edit" value="{{ csrf_token() }}">
-                            <button type="submit" class="btn-del">Eliminar Tarifa</button>
+                            <input type="hidden" value="{{$t->id}}" id="form-id">
+                            <button value="{{$t->id}}" type="submit" class="btn-del">Eliminar Tarifa</button>
                         </form>
                     </div>
 
@@ -54,16 +60,17 @@
 
       $('.container #delete-tar button:submit').on('click', function (e) {
           e.preventDefault();
+          var aixo = $(this);  
           $.ajax({
               type: "DELETE",
-              url: "/tarifes/eliminarTarifa/"+$('#form-id').val(),
+              url: "/tarifes/eliminarTarifa",
               data: {
-                  "_token": $('#token-edit').val(),
+                id: $(this).val(),
+                "_token": $('#token-edit').val(),
               },
               success: function (response) {
                 toastr.success(response.notification.message, "Success");
-                $('#form-id').closest('.card').css('display', 'none')
-                  
+                $(aixo).closest('.card').css("display" , "none");
               },
               error: function (error) {
                   if (error.responseJSON.error == undefined) {

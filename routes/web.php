@@ -33,7 +33,7 @@ Route::get('/tarifes/crearTarifa', 'TarifasController@creadorTarifes')->middlewa
 Route::post('/tarifes/crearTarifa/crear', 'TarifasController@crearTarifa')->middleware('isAss');
 Route::get('/tarifes/editarTarifa/{id}', 'TarifasController@editadorTarifa')->middleware('isAss', 'tarAssessor');
 Route::put('/tarifes/editarTarifa/{id}/editar', 'TarifasController@editarTarifa')->middleware('isAss', 'tarAssessor');
-Route::delete('/tarifes/eliminarTarifa/{id}', 'TarifasController@eliminarTarifa')->middleware('isAss', 'tarAssessor');
+Route::delete('/tarifes/eliminarTarifa', 'TarifasController@eliminarTarifa');
 Route::get('/tarifes/{id}', 'TarifasController@mostrarTarifaCli');
 // Perfil Assessor
 Route::get('/perfilAss', 'PerfilAssController@perfilAss')->middleware('isAss');
@@ -48,11 +48,11 @@ Route::get('/contractarTarifa/{id}', 'ContractarController@resumContractar');
 //pagament
 Route::get('/payment', array(
 	'as' => 'payment',
-	'uses' => 'contractarController@postPayment',
+	'uses' => 'ContractarController@postPayment',
 ));
 Route::get('/payment/status', array(
 	'as' => 'payment.status',
-	'uses' => 'contractarController@getPaymentStatus',
+	'uses' => 'ContractarController@getPaymentStatus',
 ));
 //cli asssessoria
 Route::get('/cliAssessoria', 'AssessoriaController@cliAssessoriaHome');
@@ -68,8 +68,8 @@ Route::get('/cliHistorial', 'AssessoriaController@cliHistorial');
 
 //files
 Route::get('/progress/{file}','FileController@getImage')->middleware('fileAcces');
-Route::get('/descarregarRutina/{file}', 'Filecontroller@getRutina');
-Route::get('/descarregarDieta/{file}', 'Filecontroller@getDieta');
+Route::get('/descarregarRutina/{file}', 'FileController@getRutina');
+Route::get('/descarregarDieta/{file}', 'FileController@getDieta');
 
 
 Auth::routes();

@@ -13,15 +13,6 @@
     <li class="nav-item active">
         <a class="nav-link hover-weight" href="/cliAssessoria">Assessoria</a>
     </li>
-    <!--<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle drop-resp" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Categories
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-      </li>-->
       </ul>
       <form action="/search" method="POST" role="search" class="form-inline my-2 my-lg-0 form-resp">
         <input type="hidden" name="_token" id="token-edit" value="{{ csrf_token() }}">

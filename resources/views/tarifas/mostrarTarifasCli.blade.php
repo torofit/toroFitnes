@@ -11,7 +11,13 @@
         @foreach ($user->assessor->tarifas as $t)
         <div class="card" style="width: 18rem;">
             <h5 class="card-titol">{{$t->title}}</h5>
-            <h6 class="card-duration">Duracio {{$t->duration}} mes<h6>
+            <h6 class="card-duration">Duracio {{$t->duration}}
+                @if ($t->duration > 1)
+                mesos
+            @else
+                mes
+            @endif 
+            <h6>
                     <h6 class="card-price">{{$t->price}}€</h6>
                     <div>
 
